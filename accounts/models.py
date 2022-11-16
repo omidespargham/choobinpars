@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 
 from accounts.managers import UserManager
-
+import random
+import string
 
 class User(AbstractBaseUser):
     phone_number = models.CharField(max_length=11, unique=True)
@@ -24,3 +25,12 @@ class User(AbstractBaseUser):
     @property
     def is_staff(self):
         return self.is_admin
+    @classmethod
+    def get_random_string(cls):
+        letters = string.ascii_letters
+        result_str = ''.join(random.choice(letters) for i in range(10))
+        return result_str
+
+class RGScode(models.Model):
+    phone_number = models.CharField(max_length=12,unique=True)
+    code = models.PositiveIntegerField()
