@@ -33,7 +33,7 @@ class LoginView(View):
             if request.next:
                 return redirect(reverse("accounts:user_login_verify") + "?next=" + request.next)
             return redirect("accounts:user_login_verify")
-        return render(request, self.template_name, {"form", form})
+        return render(request, self.template_name, {"form": form})
 
 
 class LoginVerifyView(View):

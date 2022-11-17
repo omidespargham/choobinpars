@@ -9,6 +9,9 @@ class LoginForm(forms.Form):
 
     def clean_phone_number(self):
         phone = self.cleaned_data["phone_number"]
+        # start with validation added
+        if phone[0:2] != "09":
+            raise ValidationError("تلفن باید با 09 شروع شود")
         try:
             code = RGScode.objects.get(phone_number=phone)
             code.delete()
