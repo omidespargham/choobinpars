@@ -3,15 +3,14 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.exceptions import ValidationError
 from .models import User, RGScode
 
-
 class LoginForm(forms.Form):
-    phone_number = forms.CharField(max_length=11)
+    phone_number = forms.CharField(max_length=11,validators=[])
 
     def clean_phone_number(self):
         phone = self.cleaned_data["phone_number"]
         # start with validation added
         if phone[0:2] != "09":
-            raise ValidationError("تلفن باید با 09 شروع شود")
+            raise ValidationError([ValidationError("شماره تلفن نامعتبر است",code="invalid"),ValidationError("تلفن باید با 09 شروع شود",code="required")])
         try:
             code = RGScode.objects.get(phone_number=phone)
             code.delete()

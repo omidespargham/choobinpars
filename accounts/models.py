@@ -25,6 +25,7 @@ class User(AbstractBaseUser):
     @property
     def is_staff(self):
         return self.is_admin
+        
     @classmethod
     def get_random_string(cls):
         letters = string.ascii_letters
