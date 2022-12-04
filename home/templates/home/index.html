@@ -1,8 +1,20 @@
-{% extends 'base.html' %}
-{% block title %} {% endblock %}
+{% extends "base.html" %}
 {% block body %}
-<h3> hello user </h3>
-{% for product in products%}
-<h2>{{product.name}}</h2>
-{% endfor%}
+    {% for product in products%}
+        <div class="card" style="width: 18rem;display: inline-block;">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{product.name}}</h5>
+              <p class="card-text">{{product.description}}</p>
+              <a href="{% url 'products:product_detail' product.id %}" class="btn btn-primary">Detail</a>
+              {% if not product in cart_products %}
+              <a href="{% url 'cart:cart_add' product.id %}" class="btn btn-success">Add TO CART</a>
+              {% endif %}
+            </div>
+          </div>
+
+
+
+
+    {% endfor%}
 {% endblock %}

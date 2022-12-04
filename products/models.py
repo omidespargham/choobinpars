@@ -31,7 +31,6 @@ class Product(models.Model):
     availability = models.BooleanField(default=True)
     description = models.TextField()
 
-
     def __str__(self):
         return f"{self.name}"
     
