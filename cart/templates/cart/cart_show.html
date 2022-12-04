@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block body %}
+    {% for cart in carts%}
+    <div class="card" style="width: 18rem;display: inline-block;">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{cart.product.name}}</h5>
+          <p class="card-text">{{cart.product.description}}</p>
+          <a href="{% url 'products:product_detail' cart.product.id %}" class="btn btn-primary">Detail</a>
+        </div>
+      </div>
+    {% endfor%}
+{% endblock %}

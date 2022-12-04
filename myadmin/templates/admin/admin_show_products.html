@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block body %}
+    {% for product in products%}
+        <div class="card" style="width: 18rem;display: inline-block;">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{product.name}}</h5>
+              <p class="card-text">{{product.description}}</p>
+              <a href="{% url 'products:product_detail' product.id %}" class="btn btn-primary">Detail</a>
+              {% if user.is_admin %}
+              <a href="{% url 'myadmin:product_delete' product.id %}" class="btn btn-success">Delete</a>
+              {% endif %}
+            </div>
+          </div>
+
+
+
+
+    {% endfor%}
+{% endblock %}
