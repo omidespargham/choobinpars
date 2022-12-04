@@ -22,9 +22,17 @@
                 <a class="nav-link" href="{% url 'cart:cart_show' %}">sabadekharid</a>
             </li>
             {% if user.is_admin %}
-            <li class="nav-item active">
-                <a class="nav-link" href="#">admin</a>
-            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  admin
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{% url 'myadmin:show_products' %}">products</a>
+                  <a class="dropdown-item" href="#">add product</a>
+                  <!-- <div class="dropdown-divider"></div> -->
+                  <a class="dropdown-item" href="#">nothing</a>
+                </div>
+              </li>
             {% endif %}
         </ul>
     </div>
