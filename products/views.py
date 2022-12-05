@@ -3,10 +3,6 @@ from django.views import View
 from .models import Product,Category
 
 
-class ProductCreateView(View):
-    def post(self, request):
-        pass
-
 class ProductDetailView(View):
     template = "products/product_detail.html"
 
@@ -29,9 +25,14 @@ class ProductDetailView(View):
 
 class ProductsWithSpecificCategoryView(View): # this is for search
     def get(self,request,category_slug):
-        category = Category.objects.get(slug=category_slug)
-        products = Product.objects.filter(category=category)
+        try:
+            category = Category.objects.get(slug=category_slug)
+            products = Product.objects.filter(category=category)
+        except Category.DoesNotExist:
+            products = None
         return render(request,"products/products.html",{"products":products})
+
+
 
 
 
