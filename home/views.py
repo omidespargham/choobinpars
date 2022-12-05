@@ -7,8 +7,11 @@ from cart.models import Cart
 class HomeView(View):
     def get(self, request):
         products = Product.objects.all()
-        cart_products = Cart.Products_of_carts(Cart.objects.filter(user=request.user))
+        cart_products = []
+        if request.user.is_authenticated:
+            cart_products = Cart.Products_of_carts(Cart.objects.filter(user=request.user))
         return render(request, 'home/index.html', {"products": products,"cart_products":cart_products})
+
 
 
 

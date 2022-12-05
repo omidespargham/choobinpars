@@ -2,7 +2,10 @@ from django.shortcuts import render,redirect
 from django.views import View
 from .models import Cart
 from products.models import Product
-class CartAddView(View):
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+class CartAddView(LoginRequiredMixin,View):
     def get(self,request,product_id):
         product = Product.objects.get(id=product_id)
         Cart.create_unique_cart(product, request.user)
@@ -12,7 +15,7 @@ class CartAddView(View):
         
     def post(self,request):
         pass
-class CartShowView(View):
+class CartShowView(LoginRequiredMixin,View):
     template_name = "cart/cart_show.html"
     def get(self,request):
         carts = Cart.objects.filter(user=request.user)
