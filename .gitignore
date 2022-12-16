@@ -3,7 +3,9 @@
 
 ## my custom
 .vscode/
+
 */migrations/
+choobin_env/*
 
 
 

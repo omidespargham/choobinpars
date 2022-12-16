@@ -20,7 +20,7 @@ class CartShowView(LoginRequiredMixin,View):
     def get(self,request):
         carts = Cart.objects.filter(user=request.user)
         return render(request, self.template_name,{"carts":carts})
-
+    
 
 
 # add cart in chobinpars OK
