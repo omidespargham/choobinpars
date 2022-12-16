@@ -10,29 +10,30 @@
                 <a class="nav-link" href="{% url 'home:home' %}">Home</a>
             </li>
             {% if not user.is_authenticated %}
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'accounts:user_login' %}">login/register</a>
-            </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'accounts:user_login' %}">login/register</a>
+                </li>
             {% else %}
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'accounts:user_logout' %}">loginOut</a>
-            </li>
-            {% endif%}
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'accounts:user_logout' %}">loginOut</a>
+                </li>
+            {% endif %}
             <li class="nav-item active">
                 <a class="nav-link" href="{% url 'cart:cart_show' %}">sabadekharid</a>
             </li>
             {% if user.is_admin %}
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  admin
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{% url 'myadmin:show_products' %}">products</a>
-                  <a class="dropdown-item" href="#">add product</a>
-                  <!-- <div class="dropdown-divider"></div> -->
-                  <a class="dropdown-item" href="#">nothing</a>
-                </div>
-              </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        admin
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'myadmin:show_products' %}">products</a>
+                        <a class="dropdown-item" href="{% url 'products:add_product' %}">add product</a>
+                        <!-- <div class="dropdown-divider"></div> -->
+                        <a class="dropdown-item" href="#">nothing</a>
+                    </div>
+                </li>
             {% endif %}
         </ul>
     </div>
