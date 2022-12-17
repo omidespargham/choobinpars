@@ -6,6 +6,5 @@ urlpatterns = [
     path('detail/<int:id>/', views.ProductDetailView.as_view(),
          name='product_detail'),
     # path("categorys/",views.Categorys.as_view(),name="category"),
-    path('add_product/', views.AddProductView.as_view(), name='add_product'),
     path("<slug:category_slug>/", views.ProductsWithSpecificCategoryView.as_view(), name="show_products"),
 ]
