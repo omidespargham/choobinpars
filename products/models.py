@@ -34,6 +34,9 @@ class Product(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Product, self).save(*args, **kwargs)
 
 
 class Repair(models.Model):
