@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.views import View
 from products.models import Product,Category
-from myadmin.forms import AddProductForm
+from myadmin.forms import AddProductForm,moblForm,check_the_form_type
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.utils.text import slugify
@@ -29,7 +29,6 @@ class AddProductView(LoginRequiredMixin,View):
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated == True and request.user.is_admin == True:
             return super().dispatch(request, *args, **kwargs)
-        
         else:
             return redirect('home:home')
 
@@ -56,4 +55,13 @@ class AddProductView(LoginRequiredMixin,View):
             return redirect('home:home')
         return render(request, 'products/addproduct.html', {'form': form})
 
+
+class addproduct(LoginRequiredMixin,View):
+    def get(self,request,category):
+        try:
+            category = Category.objects.get(name=category,parent__isnull=True)
+        except Category.DoesNotExist:
+            return redirect("home:home")
+        form = check_the_form_type(category)
+        return render(request,'products/addproduct.html',{"form":form})
 # Create your views here.

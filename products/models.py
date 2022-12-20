@@ -9,6 +9,7 @@ class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(default="")
     parent = models.ForeignKey("self", on_delete=models.CASCADE, null=True, blank=True, related_name="child_categorys")
+    product_related_class_name = models.CharField(max_length=50,null=True,blank=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
@@ -21,7 +22,10 @@ class Category(models.Model):
             full_path.append(k.name)
             k = k.parent
         return ' -> '.join(full_path[::-1])
-
+    
+class CategoryForm(models.Model):
+    category = models.OneToOneField(Category,on_delete=models.CASCADE)
+    form_class = models.CharField(max_length=50)
 
 class Product(models.Model):
     user = models.ForeignKey(USER, on_delete=models.SET_NULL, null=True, blank=True)
@@ -55,4 +59,14 @@ class Comment(models.Model):
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, blank=True)  # it can be contentType
     description = models.TextField()
 
+
+class mobl(Product):
+    count = models.PositiveBigIntegerField()
+
+class miz(Product):
+    arz = models.PositiveIntegerField()
+    tool = models.PositiveIntegerField()
+
+
+    
 # Create your models here.
