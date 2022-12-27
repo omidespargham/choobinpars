@@ -1,16 +1,162 @@
 {% extends "base.html" %}
+{% load static %}
+{% block header %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock%}
 {% block body %}
+
+
+
+<!-- Hero Section -->
+<header class="hero-section">
+  <div class="content">
+    <img src="{% static 'img/light-logo.png' %}" class="logo" alt="logo" />
+    <p class="sub-heading">بهترین و جدیدترین مدل های مبلمان</p>
+    <div class="hero-overlay"></div>
+  </div>
+</header>
+<!-- {% for product in products %}
+<div class="card" style="width: 18rem;display: inline-block;">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">{{ product.description }}</p>
+        <a href="{% url 'products:product_detail' product.id %}" class="btn btn-primary">Detail</a>
+        {% if not product in cart_products %}
+        <a href="{% url 'cart:cart_add' product.id %}" class="btn btn-success">Add TO CART</a>
+        {% endif %}
+    </div>
+</div>
+{% endfor %} -->
+
+
+<!-- Cards-container -->
+<!-- product grid -->
+<div class="container">
+  <div class="product-container">
     {% for product in products %}
-        <div class="card" style="width: 18rem;display: inline-block;">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">{{ product.name }}</h5>
-                <p class="card-text">{{ product.description }}</p>
-                <a href="{% url 'products:product_detail' product.id %}" class="btn btn-primary">Detail</a>
-                {% if not product in cart_products %}
-                    <a href="{% url 'cart:cart_add' product.id %}" class="btn btn-success">Add TO CART</a>
-                {% endif %}
-            </div>
-        </div>
+    <!-- product 1 -->
+    <div class="product-card">
+      <div class="product-image">
+        <span class="discount-tag">50% off</span>
+        <img src="{% static 'img/fur-1.jpg' %}" class="product-thumb" alt="" />
+        <button class="card-btn">دیدن جزییات</button>
+      </div>
+      <div class="product-info">
+        <p class="product-short-des">توضیح خلاصه درباره محصول</p>
+        <span class="price">{{product.prise}}</span><span class="actual-price">$40</span>
+        <h2 class="product-brand">برند محصول</h2>
+      </div>
+    </div>
     {% endfor %}
+  </div>
+  <button class="product-container-btn">مشاهده محصولات بیشتر</button>
+</div>
+
+
+
+
+<!-- Collections -->
+<section class="container">
+  <h2><span>دسته بندی محصولات</span></h2>
+  <div class="category-container">
+    <div class="categories">
+      <a href="#" class="collection">
+        <img src="{% static 'img/bed-cat.jpg' %}" alt="" />
+        <p class="collection-title">
+          سرویس <br />
+          خواب
+        </p>
+        <div class="collection-overlay"></div>
+      </a>
+
+      <a href="#" class="collection">
+        <img src="{% static 'img/table-cat.jpg' %}" alt="" />
+        <p class="collection-title">
+          میز <br />
+          نهارخوری
+        </p>
+        <div class="collection-overlay"></div>
+      </a>
+
+      <a href="#" class="collection">
+        <img src="{% static 'img/fur-cat.jpg' %}" alt="" />
+        <p class="collection-title">مبلمان</p>
+        <div class="collection-overlay"></div>
+      </a>
+    </div>
+  </div>
+
+
+
+</section>
+
+<!-- product grid -->
+<div class="container">
+  <div class="product-container-2">
+
+    <!-- product 1 -->
+    <div class="product-card">
+      <div class="product-image">
+        <span class="discount-tag">50% off</span>
+        <img src="{% static 'img/fur-1.jpg' %}" class="product-thumb" alt="" />
+        <button class="card-btn">دیدن جزییات</button>
+      </div>
+      <div class="product-info">
+        <p class="product-short-des">توضیح خلاصه درباره محصول</p>
+        <span class="price">$20</span><span class="actual-price">$40</span>
+        <h2 class="product-brand">برند محصول</h2>
+      </div>
+    </div>
+
+    <!-- product-2 -->
+    <div class="product-card">
+      <div class="product-image">
+        <span class="discount-tag">50% off</span>
+        <img src="{% static 'img/fur-2.jpg' %}" class="product-thumb" alt="" />
+        <button class="card-btn">دیدن جزییات</button>
+      </div>
+      <div class="product-info">
+        <p class="product-short-des">توضیح خلاصه درباره محصول</p>
+        <span class="price">$20</span><span class="actual-price">$40</span>
+        <h2 class="product-brand">برند محصول</h2>
+      </div>
+    </div>
+
+    <!-- product-3 -->
+    <div class="product-card">
+      <div class="product-image">
+        <span class="discount-tag">50% off</span>
+        <img src="{% static 'img/fur-3.jpg' %}" class="product-thumb" alt="" />
+        <button class="card-btn">دیدن جزییات</button>
+      </div>
+      <div class="product-info">
+        <p class="product-short-des">توضیح خلاصه درباره محصول</p>
+        <span class="price">$20</span><span class="actual-price">$40</span>
+        <h2 class="product-brand">برند محصول</h2>
+      </div>
+    </div>
+
+    <!-- product-4 -->
+    <div class="product-card">
+      <div class="product-image">
+        <span class="discount-tag">50% off</span>
+        <img src="{% static 'img/fur-4.jpg' %}" class="product-thumb" alt="" />
+        <button class="card-btn">دیدن جزییات</button>
+      </div>
+      <div class="product-info">
+        <p class="product-short-des">توضیح خلاصه درباره محصول</p>
+        <span class="price">$20</span><span class="actual-price">$40</span>
+        <h2 class="product-brand">برند محصول</h2>
+      </div>
+    </div>
+  </div>
+  <button class="product-container-btn">مشاهده محصولات بیشتر</button>
+</div>
+
+{% endblock %}
+{% block footer %}
+<script src="{% static 'js/nav.js' %}"></script>
+<script src="{% static 'js/home.js' %}"></script>
+<script src="{% static 'js/footer.js' %}"></script>
 {% endblock %}

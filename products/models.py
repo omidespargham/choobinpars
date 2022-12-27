@@ -35,6 +35,7 @@ class Product(models.Model):
     slug = models.SlugField()
     availability = models.BooleanField(default=True)
     description = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.name}"

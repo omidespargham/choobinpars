@@ -1,40 +1,45 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <!-- <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button> -->
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'home:home' %}">Home</a>
-            </li>
-            {% if not user.is_authenticated %}
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'accounts:user_login' %}">login/register</a>
-                </li>
-            {% else %}
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'accounts:user_logout' %}">loginOut</a>
-                </li>
-            {% endif %}
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'cart:cart_show' %}">sabadekharid</a>
-            </li>
-            {% if user.is_admin %}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        admin
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'myadmin:show_products' %}">products</a>
-                        <a class="dropdown-item" href="{% url 'myadmin:add_product' %}">add product</a>
-                        <!-- <div class="dropdown-divider"></div> -->
-                        <a class="dropdown-item" href="#">nothing</a>
+{% load static %}
+<nav class="nav">
+    <div class="top-nav">
+        <div class="login">
+            <a href="#">ثبت نام / ورود</a>
+        </div>
+        <div class="brand-logo">
+            <img src="{% static 'img/light-logo.png' %}" alt="logo" />
+        </div>
+        <div class="search">
+            <input type="text" class="search-box" placeholder="جستجو در بین محصولات..." />
+            <button class="search-btn"><i class="fa fa-search"></i></button>
+        </div>
+    </div>
+    <!-- Dropdon menu -->
+    <div class="btm-nav">
+        <div class="menu">
+            <a class="hamburger-icon">&#9776;</a>
+            <div class="menu-items">
+                <a href="#home" class="active">خانه</a>
+                {% for category in categorys %}
+                {% if category.child_categorys.all %}
+                <div class="dropdown">
+                    <button class="dropbtn">{{category.name}}
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        {% for subcategory in category.child_categorys.all %}
+                        <a href="#">{{subcategory.name}}</a>
+                        {%endfor%}
                     </div>
-                </li>
-            {% endif %}
-        </ul>
+                </div>
+                {%else%}
+                <a href="#home" class="active">{{category.name}}</a>
+                {% endif %}
+                {%endfor%}
+            </div>
+        </div>
+        <div class="icons">
+            <i class="fa fa-user-circle-o fa-x"></i>
+            <i class="fa fa-shopping-cart fa-x"></i>
+        </div>
+
     </div>
 </nav>

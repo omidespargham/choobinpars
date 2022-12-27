@@ -1,0 +1,246 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Vazir, "roboto", sans-serif;
+}
+
+.nav {
+  position: sticky;
+  padding: 0 40px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--dark);
+  z-index: 1000;
+}
+
+.top-nav {
+  position: relative;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--light-text);
+}
+
+.login {
+  color: var(--light-text);
+}
+
+.login a {
+  color: var(--light-text);
+  text-decoration: none;
+}
+
+.brand-logo {
+  position: absolute;
+  right: 45%;
+  bottom: -35px;
+  background: var(--dark);
+}
+
+.brand-logo img {
+  height: 60px;
+}
+
+.search {
+  width: 300px;
+  display: flex;
+  transition: 0.3s;
+}
+
+.search-box {
+  width: 90%;
+  height: 40px;
+  padding: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: 1px solid #d1d1d1;
+  text-transform: capitalize;
+  background: #cccccc;
+  color: #a9a9a9;
+  outline: none;
+}
+
+.search-btn {
+  width: 10%;
+  height: 40px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: var(--accent);
+  color: var(--light-text);
+  font-size: 15px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.search-box::placeholder {
+  color: #a9a9a9;
+}
+
+.btm-nav {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  color: var(--light-text);
+}
+
+.menu ul {
+  display: flex;
+  list-style: none;
+}
+
+.icons {
+  display: flex;
+  padding: 0 10px;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icons > i {
+  opacity: 0.5;
+  transition: 0.3s;
+  color: var(--light-text);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.icons > i:hover {
+  opacity: 1;
+}
+
+.icons a {
+  margin-right: 20px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.menu a {
+  float: right;
+  display: block;
+  color: var(--light-text);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.menu .hamburger-icon {
+  display: none;
+}
+
+.dropdown {
+  float: right;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 17px;
+  border: none;
+  outline: none;
+  color: var(--light-text);
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--dark-light);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: var(--light-text);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: right;
+}
+
+.menu a:hover, .dropdown:hover .dropbtn {
+  background-color: var(--light);
+  color: var(--dark-text);
+}
+
+.dropdown-content a:hover {
+  background-color: var(--light);
+  color: var(--dark-text);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+@media only screen and (max-width: 1000px) {
+  .search {
+    display: none;
+  }
+  .search, .menu a, .dropdown .dropbtn {
+    display: none;
+  }
+  .menu a.hamburger-icon {
+    display: block;
+  }
+  /* The "responsive" class is added to the menu with JavaScript when the user clicks on the icon. */
+  .menu.responsive {
+    background: var(--dark);
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  .menu.responsive a.hamburger-icon {
+    position: absolute;
+    cursor: pointer;
+  }
+  .menu.responsive .menu-items {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 40px;
+    background: var(--dark);
+    height: 100vh;
+  }
+  .menu.responsive a {
+    float: none;
+    display: block;
+    text-align: right;
+  }
+  .menu.responsive .dropdown {float: none;}
+  .menu.responsive .dropdown-content {
+    position: relative;
+    background: var(--dark-light);
+  }
+  .menu.responsive .dropdown .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: right;
+  }
+  .menu-responsive .menu-items a {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    color: red;
+    background: white;
+  }
+}
+
+
