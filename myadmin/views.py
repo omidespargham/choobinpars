@@ -33,10 +33,12 @@ class AddProductView(LoginRequiredMixin, View):
             return super().dispatch(request, *args, **kwargs)
         else:
             return redirect('home:home')
+        
+    # version 1 add product
+    def get(self, request):
+        return render(request, 'myadmin/addproduct.html', {'form': self.form_class})
 
-    # def get(self, request):
-    #     return render(request, 'myadmin/addproduct.html', {'form': self.form_class})
-
+    # version 1 and 2 of add product
     def post(self, request):
         form = self.form_class(request.POST)
         if form.is_valid():
@@ -66,9 +68,12 @@ class AddProductSelectCategoryView(LoginRequiredMixin, View):
             return super().dispatch(request, *args, **kwargs)
         else:
             return redirect('home:home')
+        
+    # version 2 add product (not activated)
     def get(self, request):
         return render(request,"myadmin/select_category.html",{"form":self.form_class})
 
+    # version 2 add product (not activated)
     def post(self, request):
         form = ParentCategoryForm(request.POST)
         if form.is_valid():
