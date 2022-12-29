@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block header %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock%}
+{% block body %}
+
+
+
+<!-- Cards-container -->
+<!-- product grid -->
+<div class="container">
+  <div class="product-container">
+    {% for product in products %}
+    <!-- product 1 -->
+    <div class="product-card">
+      <div class="product-image">
+        <span class="discount-tag">50% off</span>
+        <img src="{% static 'img/fur-1.jpg' %}" class="product-thumb" alt="" />
+        <button class="card-btn">دیدن جزییات</button>
+      </div>
+      <div class="product-info">
+        <p class="product-short-des">توضیح خلاصه درباره محصول</p>
+        <span class="price">{{product.prise}}</span><span class="actual-price">$40</span>
+        <h2 class="product-brand">برند محصول</h2>
+      </div>
+    </div>
+    {% empty %}
+    <h2 class="product-brand" >محصولی وجود ندارد</h2>
+    {% endfor %}
+
+  </div>
+  <!-- <a href="{% static 'home:more_product_button' {{category.id}}  %}" class="product-container-btn">مشاهده محصولات بیشتر</a> -->
+</div>
+
+
+
+{% endblock %}
+{% block footer %}
+<script src="{% static 'js/nav.js' %}"></script>
+<script src="{% static 'js/home.js' %}"></script>
+<script src="{% static 'js/footer.js' %}"></script>
+{% endblock %}

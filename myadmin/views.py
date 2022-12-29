@@ -12,13 +12,13 @@ class AdminShowProductsView(View):
     template_name = "myadmin/admin_show_products.html"
 
     def get(self, request):
-        products = Product.objects.all()
+        products = Product.objects.all().order_by("-created")
         return render(request, self.template_name, {"products": products})
 
 
 class AdminProductDeleteView(View):
-    def get(self, request, id):
-        product = Product.objects.get(id=id)
+    def get(self, request, product_id):
+        product = Product.objects.get(id=product_id)
         product.delete()
         return redirect("myadmin:show_products")
 

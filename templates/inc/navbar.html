@@ -7,17 +7,22 @@
         <div class="brand-logo">
             <img src="{% static 'img/light-logo.png' %}" alt="logo" />
         </div>
-        <div class="search">
-            <input type="text" class="search-box" placeholder="جستجو در بین محصولات..." />
-            <button class="search-btn"><i class="fa fa-search"></i></button>
-        </div>
+
+        <!-- <div class="search"> -->
+        <form class="search" action="{% url 'home:navbar_search' %}" method="get" novalidate>
+            <input type="text" class="search-box" name="navbar_search" id="navbar_search"
+                placeholder="جستجو در بین محصولات..." />
+            <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+        </form>
+        <!-- </div> -->
+
     </div>
     <!-- Dropdon menu -->
     <div class="btm-nav">
         <div class="menu">
             <a class="hamburger-icon">&#9776;</a>
             <div class="menu-items">
-                <a href="#home" class="active">خانه</a>
+                <a href="{% url 'home:home' %}" class="active">خانه</a>
                 {% for category in categorys %}
                 {% if category.child_categorys.all %}
                 <div class="dropdown">
@@ -26,12 +31,12 @@
                     </button>
                     <div class="dropdown-content">
                         {% for subcategory in category.child_categorys.all %}
-                        <a href="#">{{subcategory.name}}</a>
+                        <a href="{% url 'home:search_in_category' subcategory.id %}">{{subcategory.name}}</a>
                         {%endfor%}
                     </div>
                 </div>
                 {%else%}
-                <a href="#home" class="active">{{category.name}}</a>
+                <a href="{% url 'home:search_in_category' category.id %}" class="active">{{category.name}}</a>
                 {% endif %}
                 {%endfor%}
             </div>

@@ -21,14 +21,6 @@ class ProductDetailView(View):
 
 
 
-# class Categorys(View):
-#     def get(self, request):
-#         categorys = Category.objects.filter(parent__isnull=True)
-#         return render(request,"products/categorys.html",{"categorys":categorys})
-
-#     def post(self,request):
-#         pass
-
 
 class ProductsWithSpecificCategoryView(View):  # this is for search
     def get(self, request, category_slug):
