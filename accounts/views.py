@@ -65,7 +65,7 @@ class LoginVerifyView(View):
                 #     username=user.phone_number, password=rand_password)
             user.backend = 'django.contrib.auth.backends.ModelBackend'
             login(request, user)
-            messages.success(request, "خوش آمدید", "success")
+            # messages.success(request, "خوش آمدید", "success")
             if request.next:
                 return redirect(request.next)
             return redirect("home:home")
@@ -76,4 +76,4 @@ class UserLogoutView(LoginRequiredMixin, View):
     def get(self, request):
         logout(request)
         return redirect("home:home")
-# Create your views here.
+

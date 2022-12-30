@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 from .models import User, RGScode
 
 class LoginForm(forms.Form):
-    phone_number = forms.CharField(max_length=11,validators=[])
+    phone_number = forms.CharField(max_length=11,validators=[],label="",widget=forms.TextInput(attrs={"placeholder":"تلفن همراه"}))
 
     def clean_phone_number(self):
         phone = self.cleaned_data["phone_number"]
