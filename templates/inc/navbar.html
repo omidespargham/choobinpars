@@ -1,9 +1,18 @@
 {% load static %}
 <nav class="nav">
     <div class="top-nav">
+        {% if user.is_authenticated %}
+
+        <div class="icons">
+            <i class="fa fa-user-circle-o fa-x"></i>
+            <!-- <i class="fa fa-shopping-cart fa-x"></i> -->
+        </div>
+        {% else %}
         <div class="login trigger">
             <a href="{% url 'accounts:user_login' %}">ثبت نام / ورود</a>
         </div>
+        {% endif %}
+
         <div class="brand-logo">
             <img src="{% static 'img/light-logo.png' %}" alt="logo" />
         </div>
@@ -26,7 +35,7 @@
                 {% for category in categorys %}
                 {% if category.child_categorys.all %}
                 <div class="dropdown">
-                    <button class="dropbtn">{{category.name}}
+                    <button class="dropbtn" onclick="window.location.href='{{category.get_absolute_url}}'">{{category.name}}
                         <i class="fa fa-caret-down"></i>
                     </button>
                     <div class="dropdown-content">
@@ -41,10 +50,10 @@
                 {%endfor%}
             </div>
         </div>
-        <div class="icons">
+        <!-- <div class="icons">
             <i class="fa fa-user-circle-o fa-x"></i>
             <i class="fa fa-shopping-cart fa-x"></i>
-        </div>
+        </div> -->
 
     </div>
 </nav>

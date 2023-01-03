@@ -14,19 +14,21 @@
     {% for product in products %}
     <!-- product 1 -->
     <div class="product-card">
-      <div class="product-image">
-        <span class="discount-tag">50% off</span>
-        <img src="{% static 'img/fur-1.jpg' %}" class="product-thumb" alt="" />
-        <button class="card-btn">دیدن جزییات</button>
-      </div>
-      <div class="product-info">
-        <p class="product-short-des">توضیح خلاصه درباره محصول</p>
-        <span class="price">{{product.prise}}</span><span class="actual-price">$40</span>
-        <h2 class="product-brand">برند محصول</h2>
-      </div>
+      <a href="{% url 'products:product_detail' product.id %}">
+        <div class="product-image">
+          <span class="discount-tag">50% off</span>
+          <img src="{% static 'img/fur-1.jpg' %}" class="product-thumb" alt="" />
+          <button class="card-btn">دیدن جزییات</button>
+        </div>
+        <div class="product-info">
+          <p class="product-short-des">توضیح خلاصه درباره محصول</p>
+          <span class="price">{{product.prise}}</span><span class="actual-price">$40</span>
+          <h2 class="product-brand">برند محصول</h2>
+        </div>
+      </a>
     </div>
     {% empty %}
-    <h2 class="product-brand" >محصولی وجود ندارد</h2>
+    <h2 class="product-brand">محصولی وجود ندارد</h2>
     {% endfor %}
 
   </div>

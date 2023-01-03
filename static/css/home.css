@@ -6,11 +6,11 @@
   --dark: rgb(34, 51, 59);
   --dark-light: rgb(53, 91, 109);
 
-  --light: #F2F4F3;
-  --accent: #5E503F;
+  --light: #f2f4f3;
+  --accent: #5e503f;
   --light-accent: #a9927d;
   --dark-text: #22333b;
-  --light-text: #F2F4F3;
+  --light-text: #f2f4f3;
 }
 
 body {
@@ -20,49 +20,72 @@ body {
 
 /* modal part here */
 .modal {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(1.1);
-    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
 }
 
 .modal-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 1rem 1.5rem;
-    width: 24rem;
-    border-radius: 0.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 1rem 1.5rem;
+  width: 24rem;
+  border-radius: 0.5rem;
 }
 
 .close-button {
-    float: right;
-    width: 1.5rem;
-    line-height: 1.5rem;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 0.25rem;
-    background-color: lightgray;
+  float: right;
+  width: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  background-color: lightgray;
 }
 
 .close-button:hover {
-    background-color: darkgray;
+  background-color: darkgray;
+}
+
+.modal-form {
+  padding: 2rem 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.modal-form input {
+  margin: 1rem 0;
+}
+
+.modal-form input,
+button {
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.modal-form button {
+  border: none;
+  background: var(--dark);
+  color: var(--light-text);
 }
 
 .show-modal {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1.0);
-    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
-    z-index: 1000;
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+  z-index: 1000;
 }
 
 /* hero section here */
@@ -89,7 +112,6 @@ body {
   font-size: 35px;
   font-weight: 300;
 }
-
 
 .hero-overlay {
   position: absolute;
@@ -125,6 +147,11 @@ body {
   border-radius: 10px;
 }
 
+.product-card a {
+  text-decoration: none;
+  color: var(--dark-text);
+}
+
 .product-image {
   position: relative;
   padding: 10px;
@@ -140,6 +167,8 @@ body {
   height: 450px;
   object-fit: cover;
   transition: 0.4s ease-in;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 
 .product-image:hover .product-thumb {
@@ -200,7 +229,6 @@ body {
   line-height: 20px;
   overflow: hidden;
   opacity: 0.5;
-  text-transform: capitalize;
   margin: 5px 0;
 }
 

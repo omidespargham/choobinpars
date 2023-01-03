@@ -11,6 +11,8 @@ class Category(models.Model):
     parent = models.ForeignKey("self", on_delete=models.CASCADE, null=True, blank=True, related_name="child_categorys")
     product_related_class_name = models.CharField(max_length=50,null=True,blank=True)
 
+    def get_absolute_url(self):
+        return f'/search/{self.id}/'
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Category, self).save(*args, **kwargs)
@@ -23,6 +25,7 @@ class Category(models.Model):
             k = k.parent
         return ' -> '.join(full_path[::-1])
     
+#  version 2 of products form 
 class CategoryForm(models.Model):
     category = models.OneToOneField(Category,on_delete=models.CASCADE)
     form_class = models.CharField(max_length=50)

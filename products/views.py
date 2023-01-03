@@ -10,9 +10,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class ProductDetailView(View):
     template = "products/product_detail.html"
 
-    def get(self, request, id):
+    def get(self, request, product_id):
         try:
-            product = Product.objects.get(id=id)
+            product = Product.objects.get(id=product_id)
             return render(request, self.template, {"product": product})
         except Product.DoesNotExist:
             return redirect("home:home")

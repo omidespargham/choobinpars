@@ -5,38 +5,50 @@
 {% endblock%}
 {% block body %}
 
-
+<!-- modal box -->
+<div class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <form class="modal-form">
+            <label for="phone-num">لطفاً شماره موبایل خود را وارد کنید</label>
+            <input id="phone-num" type="text" autofocus />
+            <button>ورود</button>
+        </form>
+    </div>
+</div>
 
 <!-- Hero Section -->
 <header class="hero-section">
-  <div class="content">
-    <img src="{% static 'img/light-logo.png' %}" class="logo" alt="logo" />
-    <p class="sub-heading">بهترین و جدیدترین مدل های مبلمان</p>
-    <div class="hero-overlay"></div>
-  </div>
+    <div class="content">
+        <img src="{% static 'img/light-logo.png' %}" class="logo" alt="logo" />
+        <p class="sub-heading">بهترین و جدیدترین مدل های مبلمان</p>
+        <div class="hero-overlay"></div>
+    </div>
 </header>
 
 <!-- Cards-container -->
 <!-- product grid -->
 <div class="container">
-  <div class="product-container">
-    {% for product in products %}
-    <!-- product 1 -->
-    <div class="product-card">
-      <div class="product-image">
-        <span class="discount-tag">50% off</span>
-        <img src="{% static 'img/fur-1.jpg' %}" class="product-thumb" alt="" />
-        <button class="card-btn">دیدن جزییات</button>
-      </div>
-      <div class="product-info">
-        <p class="product-short-des">توضیح خلاصه درباره محصول</p>
-        <span class="price">{{product.prise}}</span><span class="actual-price">$40</span>
-        <h2 class="product-brand">برند محصول</h2>
-      </div>
+    <div class="product-container">
+        {% for product in products %}
+        <!-- product 1 -->
+        <div class="product-card">
+            <a href="{% url 'products:product_detail' product.id %}">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="{% static 'img/fur-1.jpg' %}" class="product-thumb" alt="" />
+                    <button class="card-btn">دیدن جزییات</button>
+                </div>
+                <div class="product-info">
+                    <p class="product-short-des">توضیح خلاصه درباره محصول</p>
+                    <span class="price">{{product.prise}}</span><span class="actual-price">$40</span>
+                    <h2 class="product-brand">برند محصول</h2>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-  </div>
-  <a href="{% url 'home:all_products' %}" class="product-container-btn">مشاهده محصولات بیشتر</a>
+    <a href="{% url 'home:all_products' %}" class="product-container-btn">مشاهده محصولات بیشتر</a>
 </div>
 
 
@@ -44,34 +56,34 @@
 
 <!-- Collections -->
 <section class="container">
-  <h2><span>دسته بندی محصولات</span></h2>
-  <div class="category-container">
-    <div class="categories">
-      <a href="#" class="collection">
-        <img src="{% static 'img/bed-cat.jpg' %}" alt="" />
-        <p class="collection-title">
-          سرویس <br />
-          خواب
-        </p>
-        <div class="collection-overlay"></div>
-      </a>
+    <h2><span>دسته بندی محصولات</span></h2>
+    <div class="category-container">
+        <div class="categories">
+            <a href="#" class="collection">
+                <img src="{% static 'img/bed-cat.jpg' %}" alt="" />
+                <p class="collection-title">
+                    سرویس <br />
+                    خواب
+                </p>
+                <div class="collection-overlay"></div>
+            </a>
 
-      <a href="#" class="collection">
-        <img src="{% static 'img/table-cat.jpg' %}" alt="" />
-        <p class="collection-title">
-          میز <br />
-          نهارخوری
-        </p>
-        <div class="collection-overlay"></div>
-      </a>
+            <a href="#" class="collection">
+                <img src="{% static 'img/table-cat.jpg' %}" alt="" />
+                <p class="collection-title">
+                    میز <br />
+                    نهارخوری
+                </p>
+                <div class="collection-overlay"></div>
+            </a>
 
-      <a href="#" class="collection">
-        <img src="{% static 'img/fur-cat.jpg' %}" alt="" />
-        <p class="collection-title">مبلمان</p>
-        <div class="collection-overlay"></div>
-      </a>
+            <a href="#" class="collection">
+                <img src="{% static 'img/fur-cat.jpg' %}" alt="" />
+                <p class="collection-title">مبلمان</p>
+                <div class="collection-overlay"></div>
+            </a>
+        </div>
     </div>
-  </div>
 
 
 
@@ -79,65 +91,65 @@
 
 <!-- product grid -->
 <div class="container">
-  <div class="product-container-2">
+    <div class="product-container-2">
 
-    <!-- product 1 -->
-    <div class="product-card">
-      <div class="product-image">
-        <span class="discount-tag">50% off</span>
-        <img src="{% static 'img/fur-1.jpg' %}" class="product-thumb" alt="" />
-        <button class="card-btn">دیدن جزییات</button>
-      </div>
-      <div class="product-info">
-        <p class="product-short-des">توضیح خلاصه درباره محصول</p>
-        <span class="price">$20</span><span class="actual-price">$40</span>
-        <h2 class="product-brand">برند محصول</h2>
-      </div>
-    </div>
+        <!-- product 1 -->
+        <div class="product-card">
+            <div class="product-image">
+                <span class="discount-tag">50% off</span>
+                <img src="{% static 'img/fur-1.jpg' %}" class="product-thumb" alt="" />
+                <button class="card-btn">دیدن جزییات</button>
+            </div>
+            <div class="product-info">
+                <p class="product-short-des">توضیح خلاصه درباره محصول</p>
+                <span class="price">$20</span><span class="actual-price">$40</span>
+                <h2 class="product-brand">برند محصول</h2>
+            </div>
+        </div>
 
-    <!-- product-2 -->
-    <div class="product-card">
-      <div class="product-image">
-        <span class="discount-tag">50% off</span>
-        <img src="{% static 'img/fur-2.jpg' %}" class="product-thumb" alt="" />
-        <button class="card-btn">دیدن جزییات</button>
-      </div>
-      <div class="product-info">
-        <p class="product-short-des">توضیح خلاصه درباره محصول</p>
-        <span class="price">$20</span><span class="actual-price">$40</span>
-        <h2 class="product-brand">برند محصول</h2>
-      </div>
-    </div>
+        <!-- product-2 -->
+        <div class="product-card">
+            <div class="product-image">
+                <span class="discount-tag">50% off</span>
+                <img src="{% static 'img/fur-2.jpg' %}" class="product-thumb" alt="" />
+                <button class="card-btn">دیدن جزییات</button>
+            </div>
+            <div class="product-info">
+                <p class="product-short-des">توضیح خلاصه درباره محصول</p>
+                <span class="price">$20</span><span class="actual-price">$40</span>
+                <h2 class="product-brand">برند محصول</h2>
+            </div>
+        </div>
 
-    <!-- product-3 -->
-    <div class="product-card">
-      <div class="product-image">
-        <span class="discount-tag">50% off</span>
-        <img src="{% static 'img/fur-3.jpg' %}" class="product-thumb" alt="" />
-        <button class="card-btn">دیدن جزییات</button>
-      </div>
-      <div class="product-info">
-        <p class="product-short-des">توضیح خلاصه درباره محصول</p>
-        <span class="price">$20</span><span class="actual-price">$40</span>
-        <h2 class="product-brand">برند محصول</h2>
-      </div>
-    </div>
+        <!-- product-3 -->
+        <div class="product-card">
+            <div class="product-image">
+                <span class="discount-tag">50% off</span>
+                <img src="{% static 'img/fur-3.jpg' %}" class="product-thumb" alt="" />
+                <button class="card-btn">دیدن جزییات</button>
+            </div>
+            <div class="product-info">
+                <p class="product-short-des">توضیح خلاصه درباره محصول</p>
+                <span class="price">$20</span><span class="actual-price">$40</span>
+                <h2 class="product-brand">برند محصول</h2>
+            </div>
+        </div>
 
-    <!-- product-4 -->
-    <div class="product-card">
-      <div class="product-image">
-        <span class="discount-tag">50% off</span>
-        <img src="{% static 'img/fur-4.jpg' %}" class="product-thumb" alt="" />
-        <button class="card-btn">دیدن جزییات</button>
-      </div>
-      <div class="product-info">
-        <p class="product-short-des">توضیح خلاصه درباره محصول</p>
-        <span class="price">$20</span><span class="actual-price">$40</span>
-        <h2 class="product-brand">برند محصول</h2>
-      </div>
+        <!-- product-4 -->
+        <div class="product-card">
+            <div class="product-image">
+                <span class="discount-tag">50% off</span>
+                <img src="{% static 'img/fur-4.jpg' %}" class="product-thumb" alt="" />
+                <button class="card-btn">دیدن جزییات</button>
+            </div>
+            <div class="product-info">
+                <p class="product-short-des">توضیح خلاصه درباره محصول</p>
+                <span class="price">$20</span><span class="actual-price">$40</span>
+                <h2 class="product-brand">برند محصول</h2>
+            </div>
+        </div>
     </div>
-  </div>
-  <button class="product-container-btn">مشاهده محصولات بیشتر</button>
+    <button class="product-container-btn">مشاهده محصولات بیشتر</button>
 </div>
 
 {% endblock %}
