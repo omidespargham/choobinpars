@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from products.models import Product, Category
-from myadmin.forms import AddProductForm, moblForm, check_the_form_type, ParentCategoryForm
+from myadmin.forms import AddProductForm, check_the_form_type, ParentCategoryForm
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
