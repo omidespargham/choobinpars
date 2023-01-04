@@ -63,13 +63,14 @@ class Comment(models.Model):
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, blank=True)  # it can be contentType
     description = models.TextField()
 
+# version 2
 
-class mobl(Product):
-    count = models.PositiveBigIntegerField()
+# class mobl(Product):
+#     count = models.PositiveBigIntegerField()
 
-class miz(Product):
-    arz = models.PositiveIntegerField()
-    tool = models.PositiveIntegerField()
+# class miz(Product):
+#     arz = models.PositiveIntegerField()
+#     tool = models.PositiveIntegerField()
 
 
     

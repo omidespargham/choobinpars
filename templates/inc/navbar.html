@@ -5,10 +5,10 @@
 
         <div class="icons">
             <i class="fa fa-user-circle-o fa-x"></i>
-            <!-- <i class="fa fa-shopping-cart fa-x"></i> -->
         </div>
         {% else %}
-        <div class="login trigger">
+        <!-- trigger class is the next version of login -->
+        <div class="login ">
             <a href="{% url 'accounts:user_login' %}">ثبت نام / ورود</a>
         </div>
         {% endif %}

@@ -9,19 +9,19 @@ class AddProductForm(forms.Form):
     price = forms.IntegerField()
     description = forms.CharField(widget=forms.Textarea())
 
+# version 2
+# class moblForm(forms.ModelForm):
+#     class Meta:
+#         model = mobl
+#         # fields = "__all__"
+#         exclude = ("slug", "user", "availability")
 
-class moblForm(forms.ModelForm):
-    class Meta:
-        model = mobl
-        # fields = "__all__"
-        exclude = ("slug", "user", "availability")
-
-
-class mizForm(forms.ModelForm):
-    class Meta:
-        model = miz
-        # fields = "__all__"
-        exclude = ("slug", "user", "availability")
+# version 2 
+# class mizForm(forms.ModelForm):
+#     class Meta:
+#         model = miz
+#         # fields = "__all__"
+#         exclude = ("slug", "user", "availability")
 
 
 def check_the_form_type(category):
