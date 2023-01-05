@@ -5,22 +5,25 @@ from products.models import Product
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class CartAddView(LoginRequiredMixin,View):
-    def get(self,request,product_id):
-        product = Product.objects.get(id=product_id)
-        Cart.create_unique_cart(product, request.user)
-        # cart = Cart.objects.create(product=product,user=request.user)
-        return redirect("cart:cart_show")
+
+# class CartAddView(LoginRequiredMixin,View):
+#     def get(self,request,product_id):
+#         product = Product.objects.get(id=product_id)
+#         Cart.create_unique_cart(product, request.user)
+#         # cart = Cart.objects.create(product=product,user=request.user)
+#         return redirect("cart:cart_show")
 
         
-    def post(self,request):
-        pass
-class CartShowView(LoginRequiredMixin,View):
-    template_name = "cart/cart_show.html"
-    def get(self,request):
-        carts = Cart.objects.filter(user=request.user)
-        return render(request, self.template_name,{"carts":carts})
+#     def post(self,request):
+#         pass
+# class CartShowView(LoginRequiredMixin,View):
+#     template_name = "cart/cart_show.html"
+#     def get(self,request):
+#         carts = Cart.objects.filter(user=request.user)
+#         return render(request, self.template_name,{"carts":carts})
     
+
+
 
 
 # add cart in chobinpars OK

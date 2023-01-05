@@ -32,7 +32,7 @@ class CategoryForm(models.Model):
 
 class Product(models.Model):
     user = models.ForeignKey(USER, on_delete=models.SET_NULL, null=True, blank=True)
-    category = models.ManyToManyField(Category, null=True, blank=True)
+    category = models.ManyToManyField(Category)
     name = models.CharField(max_length=200)
     price = models.PositiveIntegerField()
     slug = models.SlugField()
