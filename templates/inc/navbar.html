@@ -2,10 +2,11 @@
 <nav class="nav">
     <div class="top-nav">
         {% if user.is_authenticated %}
-
-        <div class="icons">
-            <i class="fa fa-user-circle-o fa-x"></i>
-        </div>
+        <a href="{% url 'accounts:user_profile' %}">
+            <div class="icons">
+                <i class="fa fa-user-circle-o fa-x"></i>
+            </div>
+        </a>
         {% else %}
         <!-- trigger class is the next version of login -->
         <div class="login ">
@@ -35,7 +36,8 @@
                 {% for category in categorys %}
                 {% if category.child_categorys.all %}
                 <div class="dropdown">
-                    <button class="dropbtn" onclick="window.location.href='{{category.get_absolute_url}}'">{{category.name}}
+                    <button class="dropbtn"
+                        onclick="window.location.href='{{category.get_absolute_url}}'">{{category.name}}
                         <i class="fa fa-caret-down"></i>
                     </button>
                     <div class="dropdown-content">

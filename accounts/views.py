@@ -77,3 +77,8 @@ class UserLogoutView(LoginRequiredMixin, View):
         logout(request)
         return redirect("home:home")
 
+
+class UserProfileView(LoginRequiredMixin,View):
+    template_name = 'accounts/user_profile.html'
+    def get(self,request):
+        return render(request,self.template_name)
