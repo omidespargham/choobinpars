@@ -6,7 +6,7 @@ from random import randint
 from .models import RGScode, User
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from payment.models import Order
 
 class LoginView(View):
     form_class = LoginForm
@@ -83,5 +83,8 @@ class UserProfileView(LoginRequiredMixin,View):
     def get(self,request):
         return render(request,self.template_name)
 
-
+class ShowOrdersView(LoginRequiredMixin,View):
+    def get(self,request):
+        orders = Order.objects.filter(user=request.user)
+        return render(request,'accounts/show_orders.html',{"orders":orders})
 
