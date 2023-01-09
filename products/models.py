@@ -52,6 +52,8 @@ class Repair(models.Model):
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=200)
 
+    def __str__(self):
+        return f"{self.name}"
 
 class Favorite(models.Model):
     user = models.ForeignKey(USER, on_delete=models.CASCADE)
